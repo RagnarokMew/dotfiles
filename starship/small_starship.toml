@@ -1,0 +1,192 @@
+format = """
+[╭](bg6)\
+$username\
+[](bg:bg1 blue)\
+$directory\
+[](fg:bg1 bg:bg2)\
+$git_branch\
+$git_status\
+[](fg:bg2)\
+$c\
+$cpp\
+$rust\
+$python\
+$docker_context\
+$kubernetes\
+$terraform\
+$helm\
+$status\
+$cmd_duration\
+$time\
+$linebreak
+[╰](bg6) \
+$character\
+"""
+
+add_newline = true
+
+## Yorumi Owl Theme
+
+palette = "Yorumi_Owl"
+
+[palettes.Yorumi_Owl]
+bg1 = "#152f4c"
+bg2 = "#223f5a"
+bg3 = "#2f4e69"
+bg4 = "#3b5d77"
+bg5 = "#486d85"
+bg6 = "#557c93"
+dark_red = "#d32f2f"
+dark_green = "#5faf00"
+alt_white = "#f8f8ff"
+
+##########################
+## Transient Workaround ##
+##########################
+
+[profiles]
+transient="""
+$character\
+"""
+
+rtransient="""
+"""
+
+##############
+## Standard ##
+##############
+
+[character]
+success_symbol = "[❯](bold dark_green)"
+error_symbol = "[❯](bold dark_red)"
+
+[fill]
+symbol = ' '
+
+[username]
+show_always = true
+style_user = "bg:bg1 blue"
+style_root = "bg:bg1 blue"
+format = '[  ]($style)'
+disabled = false
+
+[directory]
+style = "bg:bg1 bold 4"
+format = "[ $path ]($style)"
+truncation_length = 2
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[time]
+disabled = true
+time_format = "%T"
+style = "bg:bg1"
+format = '[  $time ]($style)'
+
+[cmd_duration]
+disabled = true
+min_time = 500
+min_time_to_notify = 30000
+style = 'bg:bg1 fg:14'
+format = '[ $duration  ]($style)'
+
+[status]
+disabled = true
+success_symbol = "✔"
+symbol = "✘"
+style = "bg:bg2 red"
+success_style = "bg:bg2 dark_green"
+format = "[ $status $symbol ]($style)"
+
+#########
+## VSC ##
+#########
+
+[git_branch]
+symbol = ""
+style = "bg:bg2"
+format = '[[ $symbol $branch](bg:bg2 bold 6) ]($style)'
+
+[git_state]
+style = "bg:bg2"
+rebase = "[ rebase](bg:bg2 fg:11)"
+merge = "[ merge](bg:bg2 fg:10)"
+cherry_pick = "[ pick](bg:bg2 fg:13)"
+revert = "[󰕍 revert](bg:bg2 fg:9)"
+bisect = "[ bisect](bg:bg2 fg:14)"
+format = '[$state($progress_current/$progress_total) ]($style)'
+
+[git_status]
+style = "bg:bg2"
+conflicted = "[!${count}](bg:bg2 fg:9) "
+staged = "[+${count}](bg:bg2 fg:10) "
+modified = "[*${count}](bg:bg2 fg:11) "
+untracked = "[?${count}](bg:bg2 fg:12) "
+deleted = "[${count}](bg:bg2 fg:9) "
+stashed = "[${count}](bg:bg2 fg:6) "
+format = '''[${conflicted}${staged}${modified}${deleted}${untracked}]($style)'''
+ahead = "[${count}](bg:bg2 fg:dark_green) "
+behind = "[${count}](bg:bg2 fg:dark_green) "
+diverged = "[${ahead_count}](bg:bg2 fg:dark_green) [${behind_count}](bg:bg2 fg:red) "
+
+############
+## DevOps ##
+############
+
+[kubernetes]
+disabled = true
+symbol = "☸"
+style = "bg:bg4 fg:alt_white"
+format = "[ $symbol $context( ($namespace)) ]($style)"
+
+[helm]
+disabled = true
+symbol = ""
+style = "bg:bg5 fg:12"
+format = "[ $symbol $version ]($style)"
+
+[terraform]
+disabled = true
+symbol = "󰆧" # cube for opentofu <3; terraform icon:  
+style = "bg:bg4 fg:3"
+format = '[ $symbol ($version )($workspace )]($style)' # if it's slow remove $version (check docs) (terraform)
+
+[docker_context]
+disabled = true
+symbol = ""
+style = "bg:bg4 fg:12"
+format = '[ $symbol $context ]($style)'
+
+###########################
+## Programming Languages ##
+###########################
+
+[c]
+disabled = true
+symbol = ""
+style = "bg:bg3 fg:2"
+format = '[ $symbol ($version) ]($style)'
+
+[cpp]
+disabled = true
+symbol = ""
+style = "bg:bg3 fg:3"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+disabled = true
+symbol = ""
+style = "bg:bg3 fg:1"
+format = '[ $symbol ($version) ]($style)'
+
+[python]
+disabled = true
+symbol = ""
+style = "bg:bg3 fg:11"
+format = "[ $symbol $version $virtualenv]($style)"
+
