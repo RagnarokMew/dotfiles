@@ -1,5 +1,5 @@
 format = """
-[╭](#9A348E)\
+[╭](bg6)\
 $username\
 [](bg:bg1 blue)\
 $directory\
@@ -27,7 +27,7 @@ $cmd_duration\
 [](fg:bg1 bg:bg2)\
 $time\
 $line_break\
-╰ \
+[╰](bg6) \
 $character\
 """
 
