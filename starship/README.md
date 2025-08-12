@@ -58,6 +58,10 @@ add-zle-hook-widget line-finish zle-prompt-line-finish
 
 ## Starship "Dynamic" size
 
+!!! IMPORTANT !!!
+If you are using this then the config files need to be placed at ``~/.config/starship/```. 
+Otherwise, you need to edit the paths so the configs can be loaded by starship. 
+
 As far as I could read from the docs and experiment with, you can't really 
 disable built-in modules based on some arbitrary conditions (say $COLUMNS var). 
 A workaround that worked for me was having multiple config files and changing 
