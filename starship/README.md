@@ -1,7 +1,9 @@
 # Instructions for starship
 
+## Starship Zsh Transient Prompt
+
 At the time of writing starship doesn't have support for zsh transient prompt 
-so a small workaround is required
+so a small workaround is required. Add the following to ``.zshrc``:
 
 ```zsh
 
@@ -51,5 +53,30 @@ zle -N transient-prompt-line-finish
 # Set up hooks
 add-zsh-hook precmd transient-prompt-precmd
 add-zle-hook-widget line-finish zle-prompt-line-finish
+
+```
+
+## Starship "Dynamic" size
+
+As far as I could read from the docs and experiment with, you can't really 
+disable built-in modules based on some arbitrary conditions (say $COLUMNS var). 
+A workaround that worked for me was having multiple config files and changing 
+the current config in ``.zshrc``. Add the following before loading starship:
+
+```zsh
+
+## Starship "Dynamic" Module Workaround
+
+starship_precmd() {
+  if [ "$COLUMNS" -lt 30 ]; then
+    export STARSHIP_CONFIG="$HOME/.config/starship/tiny_starship.toml"
+  elif [ "$COLUMNS" -lt 50 ]; then
+    export STARSHIP_CONFIG="$HOME/.config/starship/small_starship.toml"
+  elif [ "$COLUMNS" -lt 100 ]; then
+    export STARSHIP_CONFIG="$HOME/.config/starship/medium_starship.toml"
+  else
+    export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+  fi
+}
 
 ```
