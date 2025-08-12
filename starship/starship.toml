@@ -3,11 +3,11 @@ format = """
 $username\
 [](bg:bg1 blue)\
 $directory\
-[ ](fg:bg1 bg:bg2)\
+[](fg:bg1 bg:bg2)\
 $git_branch\
 $git_state\
 $git_status\
-[ ](fg:bg2 bg:bg3)\
+[](fg:bg2 bg:bg3)\
 $c\
 $cpp\
 $rust\
@@ -117,7 +117,7 @@ format = "[ $status $symbol ]($style)"
 [git_branch]
 symbol = " "
 style = "bg:bg2"
-format = '[[$symbol $branch](bg:bg2 bold 6)[(:$remote_branch)](bg:bg2 11) ]($style)'
+format = '[[ $symbol $branch](bg:bg2 bold 6)[(:$remote_branch)](bg:bg2 11) ]($style)'
 
 [git_state]
 style = "bg:bg2"
@@ -173,20 +173,20 @@ format = '[ $symbol $context ]($style)'
 [c]
 symbol = ""
 style = "bg:bg3 fg:2"
-format = '[$symbol ($version) ]($style)'
+format = '[ $symbol ($version) ]($style)'
 
 [cpp]
 symbol = ""
 style = "bg:bg3 fg:3"
-format = '[$symbol ($version) ]($style)'
+format = '[ $symbol ($version) ]($style)'
 
 [rust]
 symbol = ""
 style = "bg:bg3 fg:1"
-format = '[$symbol ($version) ]($style)'
+format = '[ $symbol ($version) ]($style)'
 
 [python]
 symbol = ""
 style = "bg:bg3 fg:11"
-format = "[$symbol $version $virtualenv]($style)"
+format = "[ $symbol $version $virtualenv]($style)"
 
