@@ -1,0 +1,74 @@
+[global]
+    follow = mouse
+    
+    height = (0, 600)
+    width = 350
+    origin = top-right
+    offset = (10, 50)
+    notification_limit = 0 # 0 means unlimited in notification stack
+
+    ### Progress Bar ###
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+
+    ### Appearance ###
+    font = JetBrainsMono Nerd Font 10
+    line_height = 0
+    markup = full
+    format = "<i>%a</i>\n<b>%s</b>\n%b"
+    padding = 10
+    horizontal_padding = 10
+    frame_width = 2
+    separator_height = 2
+    frame_color = "#89b4fa"
+    separator_color = frame
+    highlight = "#89b4fa"
+
+    ### Behavior - HISTORY FOCUSED ###
+    idle_threshold = 120
+    ignore_dbusclose = false
+    stack_duplicates = true
+    show_indicators = yes
+    sticky_history = yes
+    history_length = 50
+    always_run_script = true
+
+    ### Corner Radius ###
+    corner_radius = 8
+
+[urgency_low]
+    background = "#1e1e2e"
+    foreground = "#cdd6f4"
+    timeout = 10
+    history_ignore = no
+
+[urgency_normal]
+    background = "#1e1e2e"
+    foreground = "#cdd6f4"
+    timeout = 15
+    history_ignore = no
+
+[urgency_critical]
+    background = "#1e1e2e"
+    foreground = "#cdd6f4"
+    frame_color = "#fab387"
+    highlight = "#fab387"
+    timeout = 0
+    history_ignore = no
+
+# Example application-specific rules that respect history
+[spotify]
+    appname = Spotify
+    urgency = low
+    format = "🎵 <b>%s</b>\n%b"
+    timeout = 12
+    history_ignore = no
+
+# Rule to never store spammy notifications in history
+[low_priority]
+    msg_urgency = low
+    timeout = 3
+    history_ignore = yes       # Don't clutter history with trivial stuff
