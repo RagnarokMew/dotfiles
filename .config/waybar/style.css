@@ -37,6 +37,7 @@ tooltip label {
 
 /* ──────────────────────────────────────────────────────────────┤ general ├───
 */
+#custom-notification,
 #custom-theme,
 #workspaces,
 #window,
@@ -47,7 +48,6 @@ tooltip label {
 #clock,
 #custom-wifi,
 #bluetooth,
-#custom-update,
 #mpris,
 #pulseaudio,
 #backlight,
@@ -297,12 +297,12 @@ tooltip label {
 
 /* ────────────────────────────────────────────────────────┤ system update ├───
 */
-#custom-update {
+#custom-notification {
   padding-right: 8px;
   background: @tray;
 }
 
-#custom-update:hover {
+#custom-notification:hover {
   color: @hover-fg;
 }
 

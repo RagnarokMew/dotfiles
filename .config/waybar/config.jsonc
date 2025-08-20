@@ -49,6 +49,7 @@
 
     "custom/wifi",          // wi-fi
     "bluetooth",            // bluetooth
+    "custom/notification",
     //"custom/update",        // system update
     "custom/right5"
   ],
@@ -304,7 +305,7 @@
   // ───────────────────────────────────────────────────────────────┤ date ├───
 
   "clock#date": {
-    "format": "󰸗 {:%m-%d}",
+    "format": "󰸗 {:%d-%m}",
     "tooltip-format": "<tt>{calendar}</tt>",
 
     "calendar": {
@@ -368,6 +369,19 @@
     "interval": 1,
     "min-length": 1,
     "max-length": 1
+  },
+
+  // ───────────────────────────────────────────────────────┤ notification ├───
+
+  "custom/notification": {
+    "exec": "~/.config/waybar/scripts/notification.sh",
+    "interval": 60,
+    "on-click": "~/.config/waybar/scripts/notification-menu.sh",
+    "on-click-right": "dunstctl set-paused toggle",
+    "format": "{}",
+    "min-length": 1,
+    "max-length": 1,
+    "return-type": "json"
   },
 
   // ──────────────────────────────────────────────────────┤ system update ├───
