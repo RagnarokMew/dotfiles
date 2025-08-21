@@ -10,11 +10,13 @@
   // ──────────────────────────────────────────────────────────┤ positions ├───
 
   "modules-left": [
-    //"custom/theme",         // theme switcher
     //"custom/left1",
 
     "hyprland/workspaces",  // workspaces
     "custom/right1",
+
+    "custom/pomodoro",      // pomodoro timer
+    "custom/rightline1",
 
     "disk",                 // disk free space
     "custom/rightline1",
@@ -50,7 +52,6 @@
     "custom/wifi",          // wi-fi
     "bluetooth",            // bluetooth
     "custom/notification",
-    //"custom/update",        // system update
     "custom/right5"
   ],
 
@@ -58,10 +59,13 @@
     "mpris",                // media info
 
     "custom/leftline1",
-    "privacy",
+    "privacy",              // privacy
 
     "custom/leftline1",
-    "tray",
+    "tray",                 // app tray
+
+    "custom/leftline1",
+    "custom/uptime",        // uptime
 
     "custom/left6",
     "pulseaudio",           // output device
@@ -80,6 +84,7 @@
 
   "disk": {
     "unit": "GB",
+    "interval": 1800,
     "format": "󰉉 {specific_free:0.2f} GiB",
     "tooltip-format": "{specific_used:0.2f} / {specific_total:0.2f} GB ({percentage_used}% used)"
   },
@@ -104,15 +109,13 @@
     "spacing": 5
   },
 
-  // ─────────────────────────────────────────────────────┤ theme switcher ├───
+  // ─────────────────────────────────────────────────────────────┤ uptime ├───
 
-  "custom/theme": {
-    "exec": "~/.config/waybar/scripts/current-theme.sh",
-    "return-type": "json",
-    "format": " 󰍜 ",
-    "on-click": "~/.config/waybar/scripts/theme-switcher.sh",
-    "min-length": 3,
-    "max-length": 3
+  "custom/uptime": {
+    "format": "{}",
+    "tooltip": false,
+    "interval": 60,
+    "exec": "$HOME/.config/waybar/scripts/uptime.sh"
   },
 
   // ─────────────────────────────────────────────────────────┤ workspaces ├───
@@ -416,6 +419,16 @@
     "min-length": 5,
     "max-length": 35
   },
+
+  // ─────────────────────────────────────────────────────┤ pomodoro timer ├───
+
+"custom/pomodoro": {
+	"format": "{}",
+	"return-type": "json",
+	"exec": "waybar-module-pomodoro -b 󰤄 -o 󱎫 -w 45 -s 15 -l 30 -i 3",
+	"on-click": "waybar-module-pomodoro toggle",
+	"on-click-right": "waybar-module-pomodoro reset",
+},
 
   // ──────────────────────────────────────────────────────┤ output device ├───
 
