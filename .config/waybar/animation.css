@@ -111,6 +111,9 @@
   animation: hoverable_in 0.25s ease-in 1.75s forwards;
 }
 
+#custom-uptime,
+#disk,
+#custom-pomodoro,
 #custom-wifi,
 #bluetooth,
 #custom-notification,
