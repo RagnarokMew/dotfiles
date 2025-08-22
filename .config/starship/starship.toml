@@ -188,5 +188,5 @@ format = '[ $symbol ($version) ]($style)'
 [python]
 symbol = ""
 style = "bg:bg3 fg:11"
-format = "[ $symbol $version $virtualenv]($style)"
+format = "[ $symbol $version ($virtualenv )]($style)"
 
