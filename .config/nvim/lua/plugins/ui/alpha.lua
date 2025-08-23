@@ -78,18 +78,6 @@ return {
         val = {
           {
             type = 'group',
-            val = {
-              {
-                type = 'text',
-                val = 'REMOVE ME cuz i dont know anything that goes in this missing group',
-                opts = { hl = 'Keyword', position = 'center' },
-              },
-              dashboard.section.tasks,
-            },
-            opts = { spacing = 1 },
-          },
-          {
-            type = 'group',
             val = dashboard.section.buttons.val,
             opts = { spacing = 1 },
           },
@@ -101,6 +89,7 @@ return {
       { type = 'padding', val = 2 },
       dashboard.section.footer,
     }
+
     vim.api.nvim_create_autocmd('User', {
       pattern = 'VimStarted',
       desc = 'Add Alpha dashboard footer',
