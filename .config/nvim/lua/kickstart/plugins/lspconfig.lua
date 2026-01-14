@@ -208,10 +208,35 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
+        clangd = {}, -- c
+        gopls = {}, -- go
+        basedpyright = {}, -- python
+        rust_analyzer = {}, -- rust
+        jdtls = {}, -- java
+
+        tinymist = {}, -- typst
+
+        yamlls = {}, -- yaml
+
+        --dcm = {}, -- apparently needs license :P so myeah not using it rn
+
+        graphql = {}, -- graphql
+
+        ansiblels = {}, -- ansible
+        dockerls = {}, -- dockerfile failed to install ??
+        helm_ls = {}, -- helm, early in dev
+
+        gh_actions_ls = {}, -- gh actions failed to install ??
+        gitlab_ci_ls = {}, -- gitlab ci/cd
+
+        html = {}, -- html
+
+        css_variables = {},
+        cssmodules_ls = {},
+
+        ts_ls = {}, -- typescript failed to install
+        -- denols = {}, -- deno
+
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
