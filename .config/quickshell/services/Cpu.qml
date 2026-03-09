@@ -4,15 +4,19 @@ import Quickshell
 import Quickshell.Io
 import QtQuick
 
+import config
+
 Scope {
 	id: root
 
-	property string name: ""
-	property real temp
-	property real percentage
+	property bool _enabled: Config.services.cpuEnabled
 
-	property real lastCpuIdle
-	property real lastCpuTotal
+	property string name: ""
+	property real temp: 0.0
+	property real percentage: 0.0
+
+	property real lastCpuIdle: 0.0
+	property real lastCpuTotal: 0.0 
 
 	function cleanCpuName(name: string): string {
 		return name.replace(/\(R\)/gi, "").replace(/\(TM\)/gi, "").replace(/CPU/gi, "").replace(/\d+th Gen /gi, "").replace(/\d+nd Gen /gi, "").replace(/\d+rd Gen /gi, "").replace(/\d+st Gen /gi, "").replace(/Core /gi, "").replace(/Processor/gi, "").replace(/\s+/g, " ").trim();
@@ -24,6 +28,8 @@ Scope {
 
 		path: "/proc/cpuinfo"
 		onLoaded: {
+				if (!root._enabled) return;
+
 				const nameMatch = text().match(/model name\s*:\s*(.+)/);
 				if (nameMatch)
 						root.name = root.cleanCpuName(nameMatch[1]);
@@ -35,6 +41,8 @@ Scope {
 
 		path: "/proc/stat"
 		onLoaded: {
+			if (!root._enabled) return;
+
 			const data = text().match(/^cpu\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/);
 
 			if (data) {
@@ -55,7 +63,7 @@ Scope {
 	Process {
 		id: cpuTempProc
 		command: ["sensors"]
-		running: true
+		running: root._enabled
 
 		stdout: StdioCollector {
 			onStreamFinished: {
@@ -72,8 +80,8 @@ Scope {
 
 	Timer {
 		interval: 10000
-		running: true
-		repeat: true
+		running: root._enabled
+		repeat: root._enabled
 		onTriggered: {
 			stat.reload();
 			cpuTempProc.running = true;
