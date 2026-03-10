@@ -4,13 +4,17 @@ import Quickshell
 import Quickshell.Io
 import QtQuick
 
+import config
+
 Scope {
 	id: root
 
+	readonly property bool _enabled: Config.services.memEnabled
+
 	// RAM resources
-	property real total
-	property real used
-	property real free
+	property real total: 0.0
+	property real used: 0.0
+	property real free: 0.0
 	readonly property real percentage: total > 0 ? (used / total).toFixed(4) : 0
 	readonly property string totalPretty: formatKib(total)
 	readonly property string usedPretty: formatKib(used)
@@ -39,6 +43,8 @@ Scope {
 		path: "/proc/meminfo"
 
 		onLoaded: {
+			if (!root._enabled) return;
+
 			const data = text();
 			root.total = parseInt(data.match(/MemTotal: *(\d+)/)[1], 10) || 1;
 			root.free = parseInt(data.match(/MemAvailable: *(\d+)/)[1], 10) || 1;
@@ -47,9 +53,9 @@ Scope {
 	}
 
 	Timer {
-		interval: 60000
-		running: true
-		repeat: true
+		interval: Config.services.memTimer
+		running: root._enabled
+		repeat: root._enabled
 		onTriggered: {
 			meminfo.reload();
 		}

@@ -7,9 +7,9 @@ Scope {
 
 	property string path
 
-	property real total 
-	property real free
-	property real used
+	property real total: 0
+	property real free: 0
+	property real used: 0
 	readonly property string totalPretty: formatBytes(total)
 	readonly property string freePretty: formatBytes(free)
 	readonly property string usedPretty: formatBytes(used)
@@ -72,7 +72,7 @@ Scope {
 	}
 
 	Timer {
-		interval: 300000
+		interval: Config.services.diskTimer
 		running: true
 		repeat: true
 		onTriggered: diskProc.running = true

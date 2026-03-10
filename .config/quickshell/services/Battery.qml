@@ -13,9 +13,9 @@ Scope {
 	readonly property string curPath: `/sys/class/power_supply/${target}/energy_now`
 	readonly property string drawPath: `/sys/class/power_supply/${target}/power_now`
 
-	property string capacity
-	property string status
-	property string time
+	property string capacity: ""
+	property string status: ""
+	property string time: ""
 
 	Process {
 		id: batProc
@@ -60,7 +60,7 @@ Scope {
 	}
 
 	Timer {
-		interval: 10000
+		interval: Config.services.batTimer
 		running: true
 		repeat: true
 		onTriggered: batProc.running = true

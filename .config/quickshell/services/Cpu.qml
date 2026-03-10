@@ -9,7 +9,7 @@ import config
 Scope {
 	id: root
 
-	property bool _enabled: Config.services.cpuEnabled
+	readonly property bool _enabled: Config.services.cpuEnabled
 
 	property string name: ""
 	property real temp: 0.0
@@ -79,7 +79,7 @@ Scope {
 	}
 
 	Timer {
-		interval: 10000
+		interval: Config.services.cpuTimer
 		running: root._enabled
 		repeat: root._enabled
 		onTriggered: {
