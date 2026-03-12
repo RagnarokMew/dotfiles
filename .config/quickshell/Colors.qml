@@ -2,7 +2,7 @@ pragma Singleton
 
 import QtQuick
 
-import "themes"
+import themes
 
 QtObject {
     readonly property var theme: CatppuccinMacchiato {}
