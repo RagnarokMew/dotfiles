@@ -1,0 +1,11 @@
+local apps = require("programs")
+
+hl.on("hyprland.start", function()
+    hl.exec_cmd("systemctl --user start hyprpolkitagent")
+    hl.exec_cmd(apps.bar)
+    hl.exec_cmd(apps.notifManager)
+    hl.exec_cmd(apps.clipboard.persist)
+    hl.exec_cmd(apps.clipboard.manager)
+    hl.exec_cmd(apps.wallpaperManager.daemon)
+    hl.exec_cmd(apps.menuBacked)
+end)
