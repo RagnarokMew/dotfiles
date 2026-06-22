@@ -6,6 +6,6 @@ local envs = {
     QT_QPA_PLATFORMTHEME = "qt6ct",
 }
 
-for k, v in envs do
+for k, v in pairs(envs) do
     hl.env(k, v)
 end
