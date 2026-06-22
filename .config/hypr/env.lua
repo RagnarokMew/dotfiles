@@ -4,6 +4,7 @@ local envs = {
     XCURSOR_SIZE = "24",
     HYPRCURSOR_SIZE = "24",
     QT_QPA_PLATFORMTHEME = "qt6ct",
+    HYPR_PERMS = "true"
 }
 
 for k, v in pairs(envs) do
