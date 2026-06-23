@@ -24,7 +24,7 @@ local programs = {
     bar = "waybar",
     notifManager = "dunst",
     wallpaperManager = {
-        daemon = "aww-daemon",
+        daemon = "awww-daemon",
     },
     colorPicker = "hyprpicker",
 }
